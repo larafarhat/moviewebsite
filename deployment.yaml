@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: django-app-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: django
+  template:
+    metadata:
+      labels:
+        app: django
+    spec:
+      containers:
+      - name: django-app
+        # This 'image' tag is a placeholder. 
+        # The Jenkinsfile will dynamically replace it with the correct build-specific image tag.
+        image: django-project/django-app:placeholder
+        # 'IfNotPresent' is crucial for Minikube. It ensures that Minikube uses the local image 
+        # we build directly into its Docker daemon, rather than trying to pull from a remote registry.
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 8000

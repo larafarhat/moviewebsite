@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>List Users</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+  </head>
+  <body>
+    <h1>List of Users</h1>
+
+    {% if users %}
+    <ul>
+      {% for user in users %}
+      <li>
+        <ul>
+          <li><strong>ID:</strong> {{ user.user_id }}</li>
+          <li><strong>Name:</strong> {{ user.user_name }}</li>
+        </ul>
+        <br />
+      </li>
+      {% endfor %}
+    </ul>
+
+    {% endif %}
+
+    <br /><br />
+    <a href="./"><button>Back to Home</button></a>
+    <!-- <a href="add_movie/"><button>Add New Movie</button></a> -->
+  </body>
+</html>

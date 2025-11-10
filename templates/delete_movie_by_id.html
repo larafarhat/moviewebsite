@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <title>delete</title>
+  </head>
+  <body>
+    <h2>Delete Movie by ID</h2>
+
+    <form method="POST" action="/delete_movie_by_id">
+      {% csrf_token %}
+      <label for="movie_id">Movie ID:</label>
+      <input type="text" name="movie_id" id="movie_id" />
+      <button type="submit">Delete</button>
+    </form>
+  </body>
+</html>

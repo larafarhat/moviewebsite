@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: django-app-service
+spec:
+  selector:
+    # This selector must match the 'app: django' label in the deployment's pod template.
+    app: django
+  ports:
+    - protocol: "TCP"
+      # 'port' is the port the service will be exposed on within the Kubernetes cluster.
+      port: 8000
+      # 'targetPort' is the port that the container is listening on (defined in the Dockerfile).
+      targetPort: 8000
+  # 'NodePort' exposes the service on a static port on each node's IP.
+  # This makes it easy to access the service from outside the Minikube cluster.
+  type: NodePort
