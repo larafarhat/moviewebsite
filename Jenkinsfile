@@ -20,7 +20,7 @@ pipeline {
                     echo "Building Docker image for macOS..."
                     // This command configures the shell to use Minikube's internal Docker daemon.
                     // It's the crucial step for making the image available to Kubernetes without a remote registry.
-                    sh 'eval $(minikube -p minikube docker-env)'
+                    sh 'eval $(/opt/homebrew/bin/minikube docker-env)'
                     
                     // Build the image and tag it with the unique Jenkins build number to ensure freshness
                     sh "docker build -t ${env.DOCKER_IMAGE_NAME}:${env.BUILD_NUMBER} ."
